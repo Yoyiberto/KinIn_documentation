@@ -18,9 +18,29 @@ theme:
         name: Light mode
       primary: blue
       accent: deep orange
+  # Enable syntax highlighting with Pygments
+  highlightjs: false
+  hljs_languages: []
 
+# Python Markdown extensions
 markdown_extensions:
   - attr_list
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_lang_class: true
+  - pymdownx.superfences
+
+# Custom plugins
+plugins:
+  - search
+  - mkdocs-simple-hooks:
+      hooks:
+        on_config: "custom_extensions.structured_text_lexer:register_lexer"
+
+# Extra CSS for custom styling
+extra_css:
+  - css/custom.css
+
 nav:
   - Home: index.md  # Link to the main page
   - Getting Started:
@@ -32,5 +52,7 @@ nav:
     - Linear Algebra: Modules/linAlg.md 
   - Examples:
     - Example 1: examples/example1.md
+    - Structured Text: structured_text_example.md
+    - Inspect Classes: inspect_classes.md
   - About:
     - License: about/license.md

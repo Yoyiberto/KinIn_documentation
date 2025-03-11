@@ -1,0 +1,62 @@
+/* Custom CSS for Structured Text syntax highlighting */
+
+/* Set the background for code blocks */
+pre code.language-st {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    border-radius: 4px;
+    padding: 1em;
+}
+
+/* Reset all styling to default gray */
+.language-st span {
+    color: #d4d4d4 !important;
+    font-weight: normal !important;
+}
+
+/* Make keywords blue and bold */
+.language-st .k,
+.language-st .kd,
+.language-st .kn {
+    color: #569cd6 !important;
+    font-weight: bold !important;
+}
+
+/* Make types teal */
+.language-st .kt {
+    color: #4ec9b0 !important;
+}
+
+/* Make strings orange */
+.language-st .s {
+    color: #ce9178 !important;
+}
+
+/* Make comments green and italic */
+.language-st .c, 
+.language-st .c1, 
+.language-st .cm {
+    color: #6a9955 !important;
+    font-style: italic !important;
+}
+
+/* Make numbers light green */
+.language-st .m, 
+.language-st .mi, 
+.language-st .mf {
+    color: #b5cea8 !important;
+}
+
+/* Force specific keywords to be blue */
+.language-st span[class*="keyword"],
+.language-st span[class*="keyword-declaration"],
+.language-st span[class*="keyword-namespace"],
+.language-st span[class*="keyword-type"] {
+    color: #569cd6 !important;
+    font-weight: bold !important;
+}
+
+/* Direct approach for specific keywords */
+.language-st span:not([class]) {
+    color: #d4d4d4 !important;
+} 
