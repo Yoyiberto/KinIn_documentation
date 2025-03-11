@@ -1,26 +1,75 @@
-name: ci 
+name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
       - master 
       - main
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - uses: actions/cache@v2
+      
+      - name: Cache dependencies
+        uses: actions/cache@v2
         with:
           key: ${{ github.ref }}
           path: .cache
-      - run: pip install mkdocs==1.5.3
-      - run: pip install mkdocs-material
-      - run: pip install mkdocs-simple-hooks
-      - run: pip install pillow cairosvg
-      - run: mkdocs --version
-      - run: mkdocs gh-deploy --force
+      
+      # Install all dependencies
+      - name: Install MkDocs and dependencies
+        run: |
+          pip install mkdocs==1.5.3
+          pip install mkdocs-material
+          pip install mkdocs-simple-hooks
+          pip install pillow cairosvg
+      
+      # Debug: Print installed MkDocs version
+      - name: Debug - Print MkDocs version
+        run: mkdocs --version
+      
+      # Build the MkDocs site
+      - name: Build MkDocs site
+        run: mkdocs build
+      
+      # Setup Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      
+      # Upload artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./site
+  
+  # Deploy job
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
