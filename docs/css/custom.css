@@ -14,6 +14,28 @@ pre code.language-st {
     font-weight: normal !important;
 }
 
+/* Style for class names (nc) - used for keywords like PROGRAM, VAR_INPUT, etc. */
+.language-st .nc {
+    color: #569cd6 !important;
+    font-weight: bold !important;
+}
+
+/* Style for function names (nf) - used for identifiers */
+.language-st .nf {
+    color: #9cdcfe !important;
+}
+
+/* Style for error class (err) - used for symbols like : */
+.language-st .err {
+    color: #d4d4d4 !important;
+    background-color: transparent !important;
+}
+
+/* Style for punctuation (p) */
+.language-st .p {
+    color: #d4d4d4 !important;
+}
+
 /* Make keywords blue and bold */
 .language-st .k,
 .language-st .kd,
@@ -45,6 +67,46 @@ pre code.language-st {
 .language-st .mi, 
 .language-st .mf {
     color: #b5cea8 !important;
+}
+
+/* Additional styles for specific Structured Text elements */
+.language-st .o {  /* Operators */
+    color: #d4d4d4 !important;
+}
+
+.language-st .nb {  /* Built-in names */
+    color: #569cd6 !important;
+}
+
+/* Specific styling for Structured Text keywords */
+.language-st span:contains("PROGRAM"),
+.language-st span:contains("END_PROGRAM"),
+.language-st span:contains("VAR_INPUT"),
+.language-st span:contains("END_VAR"),
+.language-st span:contains("VAR_OUTPUT"),
+.language-st span:contains("VAR"),
+.language-st span:contains("IF"),
+.language-st span:contains("THEN"),
+.language-st span:contains("ELSE"),
+.language-st span:contains("END_IF"),
+.language-st span:contains("CASE"),
+.language-st span:contains("OF"),
+.language-st span:contains("END_CASE"),
+.language-st span:contains("FUNCTION"),
+.language-st span:contains("END_FUNCTION"),
+.language-st span:contains("FUNCTION_BLOCK"),
+.language-st span:contains("END_FUNCTION_BLOCK") {
+    color: #569cd6 !important;
+    font-weight: bold !important;
+}
+
+/* Specific styling for Structured Text types */
+.language-st span:contains("BOOL"),
+.language-st span:contains("INT"),
+.language-st span:contains("REAL"),
+.language-st span:contains("TIME"),
+.language-st span:contains("STRING") {
+    color: #4ec9b0 !important;
 }
 
 /* Force specific keywords to be blue */
