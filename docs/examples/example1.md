@@ -1,4 +1,4 @@
-```bash
+```
 PROGRAM PLC_PRG
 VAR
 getFwdKinematics_Body:getFwdKinematics_Body;

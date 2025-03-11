@@ -45,7 +45,6 @@ nav:
   - Home: index.md  # Link to the main page
   - Getting Started:
     - Installation: getting-started/installation.md
-    - Usage: getting-started/usage.md
   - Modules:
     - Inverse Functions: Modules/InverseFunctions.md
     - Jacobian Functions: Modules/JacobianFunctions.md  # New module
