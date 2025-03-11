@@ -54,4 +54,4 @@ nav:
     - Structured Text: structured_text_example.md
     - Inspect Classes: inspect_classes.md
   - About:
-    - License: ../about/license.md
+    - License: about/license.md
