@@ -1,6 +1,6 @@
 # Linear algebra
 
-## Eye:
+## Eye
 Gets identity matrix.
 ```
 VAR_IN_OUT
@@ -14,7 +14,7 @@ PROGRAM
 END_PROGRAM
 ```
 
-## isValueNegligible:
+## isValueNegligible
 Evaluates whether the quantity is negligible.
 ```
 VAR_INPUT

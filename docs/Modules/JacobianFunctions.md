@@ -78,6 +78,7 @@ END_PROGRAM
 ```
 
 ## Exp_so3_fromRot
+Extracts the exponential coordinates from a given rotation matrix
 ```
 VAR_INPUT
     Rot:ARRAY [1..3,1..3] OF REAL;
@@ -91,7 +92,6 @@ PROGRAM
         so3mat=> omgmat);
 END_PROGRAM
 ```
-Extracts the exponential coordinates from a given rotation matrix
 ## fastInverseTransform
 Inverts a Transformation matrix using its properties for efficiency avoiding normal matrix inversion.
 ```
