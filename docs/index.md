@@ -7,7 +7,7 @@ For installation instructions, see the [Getting Started](getting-started/install
 
 ## Functions structure
 
-1. [Linear algebra](linAlg.md)
-2. [Inverse functions](InverseFunctions.md)
-3. [Jacobian functions](JacobianFunctions.md)
+1. [Linear algebra](Modules/linAlg.md)
+2. [Inverse functions](Modules/InverseFunctions.md)
+3. [Jacobian functions](Modules/JacobianFunctions.md)
 
