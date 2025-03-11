@@ -51,7 +51,5 @@ nav:
     - Linear Algebra: Modules/linAlg.md 
   - Examples:
     - Example 1: examples/example1.md
-    - Structured Text: structured_text_example.md
-    - Inspect Classes: inspect_classes.md
   - About:
     - License: about/license.md
