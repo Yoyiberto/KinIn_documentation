@@ -1,5 +1,18 @@
 ## AdjointTransform
 Adjoint matrix form a transformation matrix.
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Computes the adjoint representation of a homogeneous transformation
     matrix
 
@@ -21,6 +34,19 @@ Adjoint matrix form a transformation matrix.
     """
 ## angVelToSkewSymMatrix
 Skew symmetric matrix in so(3).
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Converts a 3-vector to an so(3) representation
 
     :param omg: A 3-vector
@@ -35,6 +61,19 @@ Skew symmetric matrix in so(3).
     """
 ## BodyJacobian
 Body Jacobian (6xn real numbers). From joint coordinates and the joint screw axes.
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Computes the body Jacobian for an open chain robot
 
     :param Blist: The joint screw axes in the end-effector frame when the
@@ -60,6 +99,19 @@ Body Jacobian (6xn real numbers). From joint coordinates and the joint screw axe
     """
 ## expToRotAxisAndAngle
 From matrix exponential to Rotation matrix and Angle.
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Converts a 3-vector of exponential coordinates for rotation into
     axis-angle form
 
@@ -74,6 +126,19 @@ From matrix exponential to Rotation matrix and Angle.
     """
 ## Exp_se3_fromTrans
 se(3) representation of exponential coordinates.
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Computes the matrix logarithm of a homogeneous transformation matrix
 
     :param R: A matrix in SE3
@@ -91,6 +156,19 @@ se(3) representation of exponential coordinates.
                   [0,          0,           0,           0]])
     """
 ## Exp_so3_fromRot
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 Extracts the exponential coordinates from a given rotation matrix
 """Computes the matrix logarithm of a rotation matrix
 
@@ -107,6 +185,19 @@ Extracts the exponential coordinates from a given rotation matrix
                   [-1.20919958,  1.20919958,           0]])
     """
 ## fastInverseTransform
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 Inverts a Transformation matrix using its properties for efficiency avoiding normal matrix inversion.
 """Inverts a homogeneous transformation matrix
 
@@ -127,6 +218,19 @@ Inverts a Transformation matrix using its properties for efficiency avoiding nor
                   [0,  0, 0,  1]])
     """
 ## getFwdKinematics_Body
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 Computes the forward kinematics using the exponential form. It needs the M, Blist and thetalist matrices.
 FKinBody
 """Computes forward kinematics in the body frame for an open chain robot
@@ -158,10 +262,36 @@ FKinBody
     """
 ## getInvKinematics_Body
 Computes the inverse kinematics
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 
 ## RotSO3_fromExpso3
 Rotation in SO3 from Exponential form in so3.
 MatrixExp3
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Computes the matrix exponential of a matrix in so(3)
 
     :param so3mat: A 3x3 skew-symmetric matrix
@@ -179,8 +309,34 @@ MatrixExp3
 ## se3ToSpatialVel
 Gets the spatial velocity from a se3 matrix.
 se3ToVec
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 ## so3ToAngularVelocity
 Gets Angular velocity from a so3 matrix.
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """ Converts an se3 matrix into a spatial velocity vector
 
     :param se3mat: A 4x4 matrix in se3
@@ -197,6 +353,19 @@ Gets Angular velocity from a so3 matrix.
 ## spatialVelToSE3Matrix
 Spatial velocity to an SE3 matrix
 VecTose3
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Converts a spatial velocity vector into a 4x4 matrix in se3
 
     :param V: A 6-vector representing a spatial velocity
@@ -213,6 +382,19 @@ VecTose3
 ## TransSE3_fromExp_se3
 Transformation matrix in SE3 from exponential from in s3.
 MatrixExp6
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Computes the matrix exponential of an se3 representation of
     exponential coordinates
 
@@ -232,8 +414,20 @@ MatrixExp6
     """
 ## TransSE3_ToRotAndPos
 Rotation and Position from a Transformation matrix in SE3 form.
-
 TransToRp
+```
+VAR_INPUT
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+END_VAR
+VAR_OUTPUT
+    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
+
+PROGRAM
+    Inv(matSquare:= matSquareSize2, 
+	    InverseMatrix=> InverseMatrix);
+END_PROGRAM
+```
 """Converts a homogeneous transformation matrix into a rotation matrix
     and position vector
 
