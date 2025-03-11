@@ -1,5 +1,4 @@
 ```
-PROGRAM PLC_PRG
 VAR
 getFwdKinematics_Body:getFwdKinematics_Body;
 M :ARRAY [1..4,1..4] OF REAL:= 
@@ -30,6 +29,8 @@ Blist :ARRAY [1..6,1..GVL.nJoints]OF REAL:= [
 0.00000000E+00, -2.62980000E+03,  2.16000000E+02,  5.82899997E+02,-1.13000000E+02];
 
 END_VAR
+
+PROGRAM PLC_PRG
 
 getFwdKinematics_Body(M:=M , Blist:=Blist , thetalist:=thetalist_FK , T=> T_FK);
 
