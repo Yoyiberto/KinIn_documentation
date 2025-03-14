@@ -1,50 +1,29 @@
 ```
-VAR
-getFwdKinematics_Body:getFwdKinematics_Body;
-M :ARRAY [1..4,1..4] OF REAL:= 
-[1,	0,	0,	2849.8,
-0,	1,	0,	582.9,
-0,	0,	1,	-1122.5,
-0,	0,	0,	1];
-T_FK:ARRAY [1..4,1..4] OF REAL;
-thetalist_FK:ARRAY [1..GVL.nJoints] OF REAL:=
-[15*3.1415/180,
-15*3.1415/180,
-0,
-0,
-0];
-
-eomg:REAL := 0.1;
-ev:REAL := 0.1;
-nIterationsIK:DINT:=20
-thetalist:ARRAY [1..GVL.nJoints] OF REAL;
-q_IKsuccess:BOOL;
-s_IK_message:STRING;
-Blist :ARRAY [1..6,1..GVL.nJoints]OF REAL:= [
-0.00000000E+00,  0.00000000E+00, -3.20510345E-09,  1.00000000E+00,0.00000000E+00,  
-0.00000000E+00,  1.00000000E+00, -1.00000000E+00, -3.20510345E-09,1.00000000E+00,
-1.00000000E+00, -3.20510345E-09,  3.20510345E-09,  1.02726882E-17,-3.20510345E-09, 
--5.82899996E+02, -1.12250000E+03,  1.14700000E+03,  3.67625366E-06,-8.82000000E+02, 
-2.84980000E+03, -8.42878107E-06, -2.98395132E-06,  1.14700000E+03,-3.62176690E-07, 
-0.00000000E+00, -2.62980000E+03,  2.16000000E+02,  5.82899997E+02,-1.13000000E+02];
-
+VAR_INPUT
+	Transform4x4:ARRAY [1..4,1..4] OF REAL:=
+	[8.1500,    9.1300,    2.7800,    9.6500,
+    9.0600,    6.3200,    5.4700,    1.5800,
+    1.2700,    0.9800,    9.5800,    9.7100,
+	0,			0,			0,			1];
+END_VAR
+VAR_OUTPUT
+	AdT:ARRAY [1..6,1..6] OF REAL;//6x6 matrix
 END_VAR
 
 PROGRAM PLC_PRG
 
-getFwdKinematics_Body(M:=M , Blist:=Blist , thetalist:=thetalist_FK , T=> T_FK);
-
-INV_KINEMATICS(
-	M:= M, 
-	T:= T_FK, 
-	eomg:= eomg, 
-	ev:= ev, 
-	nIterationsIK:= nIterationsIK, 
-	Blist:= Blist, 
-	thetalist=> thetalist, 
-	q_IKsuccess=> q_IKsuccess, 
-	s_IK_message=> s_IK_message );
+(*==== AdjointTransform ===*)
+AdjointTransform(Transform4x4:=Transform4x4 ,
+			 AdT=>AdT );
 
 END_PROGRAM
 
+```
+```
+AdT=[8.15,	9.13,	2.78,	0,	0,	0,
+	9.06,	6.32,	5.47,	0,	0,	0,
+	1.27,	0.98,	9.58,	0,	0,	0,
+	-85.966,	-59.8188,	-37.9772949,	8.15,	9.13,	2.78,
+	66.881,	79.1953,	-65.4532,	9.06,	6.32,	5.47,
+	74.552,	46.5626,	48.3930969,	1.27,	0.98,	9.58];
 ```

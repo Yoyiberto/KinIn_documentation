@@ -13,6 +13,36 @@ PROGRAM
                 AdT=>AdT );
 END_PROGRAM
 ```
+
+Example:
+```
+VAR
+    AdjointTransform:AdjointTransform;
+	Transform4x4:ARRAY [1..4,1..4] OF REAL:=
+					[1, 0,  0, 0,
+                      0, 0, -1, 0,
+                      0, 1,  0, 3,
+                      0, 0,  0, 1];
+	AdT:ARRAY [1..6,1..6] OF REAL;//6x6 matrix
+END_VAR
+
+PROGRAM
+    AdjointTransform(Transform4x4:=Transform4x4 ,
+				 AdT=>AdT );
+END_PROGRAM
+```
+
+OUTPUT:
+```
+    [1, 0,  0, 0, 0,  0,
+                  0, 0, -1, 0, 0,  0,
+                  0, 1,  0, 0, 0,  0,
+                  0, 0,  3, 1, 0,  0,
+                  3, 0,  0, 0, 0, -1,
+                  0, 0,  0, 0, 1,  0]
+
+```
+
 ## angVelToSkewSymMatrix
 Skew symmetric matrix in so(3).
 ```
@@ -27,6 +57,28 @@ PROGRAM
 	angVelToSkewSymMatrix(omg:= pi_omg,
 	 	so3mat=>so3mat );
 END_PROGRAM
+```
+
+Example:
+```
+VAR
+    angVelToSkewSymMatrix:angVelToSkewSymMatrix;
+	omg:ARRAY[1..3] OF REAL:= [1, 2, 3];
+	so3mat:ARRAY[1..3,1..3] OF REAL;
+END_VAR
+
+PROGRAM
+    angVelToSkewSymMatrix(omg:=omg ,
+					 so3mat=>so3mat );
+END_PROGRAM
+```
+
+OUTPUT:
+```
+   [ 0, -3,  2,
+                   3,  0, -1,
+                  -2,  1,  0]
+
 ```
 
 ## BodyJacobian
@@ -45,6 +97,35 @@ PROGRAM
                  Jb:=Jb );
 END_PROGRAM
 ```
+
+Example:
+```
+VAR
+    BodyJacobian:BodyJacobian;
+	Blist:ARRAY [1..4,1..6] OF REAL:=
+			[0, 0, 1,   0, 0.2, 0.2,
+			1, 0, 0,   2,   0,   3,
+			0, 1, 0,   0,   2,   1,
+			1, 0, 0, 0.2, 0.3, 0.4];
+	thetalist:ARRAY [1..4] OF REAL:=
+			[0.2, 1.1, 0.1, 1.2];
+	Jb:ARRAY [1..6,1..6] OF REAL;//6xnt nt: number of theta
+END_VAR
+
+PROGRAM
+    BodyJacobian(Blist:=Blist , thetalist:=thetalist ,
+			 Jb:=Jb );
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
+```
+
 ## expToRotAxisAndAngle
 From matrix exponential to Rotation matrix and Angle.
 ```
@@ -61,6 +142,27 @@ PROGRAM
 		,omghat=> omghat, theta=> theta);//outs
 END_PROGRAM
 ```
+
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
+```
+
 ## Exp_se3_fromTrans
 se(3) representation of exponential coordinates.
 ```
@@ -75,6 +177,25 @@ PROGRAM
     Exp_se3_fromTrans(T:= MatMul_out);
     Exp_se3_fromTrans.expmat
 END_PROGRAM
+```
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
 ```
 
 ## Exp_so3_fromRot
@@ -92,6 +213,27 @@ PROGRAM
         so3mat=> omgmat);
 END_PROGRAM
 ```
+
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
+```
+
 ## fastInverseTransform
 Inverts a Transformation matrix using its properties for efficiency avoiding normal matrix inversion.
 ```
@@ -107,6 +249,27 @@ PROGRAM
     fastInverseTransform.invT
 END_PROGRAM
 ```
+
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
+```
+
 ## getFwdKinematics_Body
 Computes the forward kinematics using the exponential form. It needs the M, Blist and thetalist matrices.
 ```
@@ -123,6 +286,26 @@ PROGRAM
     getFwdKinematics_Body(M:=M , Blist:=Blist , thetalist:=thetalist_FK ,
                  T=> T_FK);
 END_PROGRAM
+```
+
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
 ```
 
 ## getInvKinematics_Body
@@ -153,6 +336,26 @@ PROGRAM
 END_PROGRAM
 ```
 
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
+```
+
 ## RotSO3_fromExpso3
 Rotation in SO3 from Exponential form in so3.
 ```
@@ -167,6 +370,26 @@ PROGRAM
 	RotSO3_fromExpso3(so3mat:= se3mat3x3,
 				R_Matrix=> R_Matrix);
 END_PROGRAM
+```
+
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
 ```
 
 ## se3ToSpatialVel
@@ -184,6 +407,27 @@ PROGRAM
 	    InverseMatrix=> InverseMatrix);
 END_PROGRAM
 ```
+
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
+```
+
 ## so3ToAngularVelocity
 Gets Angular velocity from a so3 matrix.
 ```
@@ -198,6 +442,26 @@ PROGRAM
     Inv(matSquare:= matSquareSize2, 
 	    InverseMatrix=> InverseMatrix);
 END_PROGRAM
+```
+
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
 ```
 
 ## spatialVelToSE3Matrix
@@ -217,6 +481,26 @@ PROGRAM
 END_PROGRAM
 ```
 
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
+```
+
 ## TransSE3_fromExp_se3
 Transformation matrix in SE3 from exponential from in s3.
 
@@ -234,6 +518,26 @@ PROGRAM
 END_PROGRAM
 ```
 
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
+```
+
 ## TransSE3_ToRotAndPos
 Rotation and Position from a Transformation matrix in SE3 form.
 
@@ -249,4 +553,24 @@ PROGRAM
     Inv(matSquare:= matSquareSize2, 
 	    InverseMatrix=> InverseMatrix);
 END_PROGRAM
+```
+
+Example:
+```
+VAR
+    Eye:Eye;
+    eye_1:ARRAY [1..4,1..4] OF REAL;
+END_VAR
+
+PROGRAM
+    Eye(eye:= eye_1);
+END_PROGRAM
+```
+
+OUTPUT:
+```
+eye_1 = [1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1];
 ```
