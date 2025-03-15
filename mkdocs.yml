@@ -50,8 +50,8 @@ nav:
     - Jacobian Functions: Modules/JacobianFunctions.md  # New module
     - Linear Algebra: Modules/linAlg.md 
   - Examples:
-    - Example 1: examples/example1.md
-    - Example 2: examples/Example_FK.md
-    - Example 3: examples/example3.md
+    - Examples Linear Algebra: examples/Ex_Alg.md
+    - Examples Inverse Functions: examples/Ex_Inv.md
+    - Examples Jacobian Functions: examples/Ex_Jacobian.md
   - About:
     - License: about/license.md

@@ -1,20 +1,4 @@
 ## Inv
-Inverse matrix.
-```
-VAR_INPUT
-    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
-END_VAR
-VAR_OUTPUT
-    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
-END_VAR
-
-PROGRAM
-    Inv(matSquare:= matSquareSize2, 
-	    InverseMatrix=> InverseMatrix);
-END_PROGRAM
-```
-
-Example:
 ```
 VAR
 	Inv:Inv;
@@ -43,24 +27,7 @@ InverseMatrix =
    -2.1412,    2.9102,   -2.1274,   -3.6468,    5.0409]
 ```
 
-
 ## LuDecomposition
-Lu Decomposition in L U terms using the doolittle's method.
-```
-VAR_INPUT
-	matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;END_VAR
-VAR_OUTPUT
-    L:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//LU factor same size input matrix
-	U:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
-END_VAR
-
-PROGRAM
-    LuDecomposition(A:=matSquare , 
-            L:= L, U:= U);
-END_PROGRAM
-```
-
-Example:
 ```
 VAR
     LuDecomposition:LuDecomposition;
@@ -95,29 +62,6 @@ U_1 =
 
 
 ## LuInverse
-Lu inverse from L U terms using forward and backwards substitutions.
-```
-VAR_INPUT
-	//create following matrices all with same size
-	L:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//LU factor same size input matrix
-	U:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
-	d:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
-	eyeN:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
-VAR_OUTPUT
-	InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
-END_VAR
-
-PROGRAM
-    LuInverse(
-        L:= L, 
-        u:= U, 
-        a:= InverseMatrix, 
-        d:= d, 
-        eyeN:= eyeN);
-END_PROGRAM
-```
-
-Example:
 ```
 VAR
     LuInverse:LuInverse;
@@ -159,24 +103,7 @@ eye_1 =
         0.00163934508, -0.0471311472, 0.143852457, 0.0258196723];
 ```
 
-
 ## pInv
-Moore – Penrose pseudo inverse matrix
-```
-VAR_INPUT
-	Jb:ARRAY [1..GVL.pInv_dim1,1..GVL.pInv_dim2] OF REAL;//maybe in inout because of size   
-VAR_OUTPUT
-	pInvMatrix:ARRAY [1..GVL.pInv_dim2,1..GVL.pInv_dim1] OF REAL;
-END_VAR
-
-PROGRAM
-    pInv(matrix:=Jb , 
-        pInvMatrix=>pInvMatrix );
-END_PROGRAM
-	
-```
-
-Example:
 ```
 VAR
     pInv:pInv;

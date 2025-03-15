@@ -39,9 +39,5 @@ PLC_PRG uses the ‘INV KIN’ function to calculate which angles are necessary 
 For getting a better visual understanding and a comprobation of the results from codesys, we can run the ‘code.m’ to ensure that the results are the same and how will the mechanism look in real life.
 
 ## **6. Demonstration & Examples**  
-   - Screenshots or a step-by-step video (if possible).  
-   - Example scenarios for using the project.
-
-The example given is about one of the real mechanisms in which the framework was tested. 
-It can be tested in other mechanisms. As long as the numerical values are ... One key point is having the ...V matrix for the description in codesys.
+There are examples for all the functions included in the framework. There is one example about one of the real mechanisms in which the framework was tested. 
 
