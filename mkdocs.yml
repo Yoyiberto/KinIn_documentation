@@ -53,5 +53,6 @@ nav:
     - Examples Linear Algebra: examples/Ex_Alg.md
     - Examples Inverse Functions: examples/Ex_Inv.md
     - Examples Jacobian Functions: examples/Ex_Jacobian.md
+    - Example mechanism: examples/Ex_Mechanism.md
   - About:
     - License: about/license.md

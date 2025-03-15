@@ -14,36 +14,6 @@ PROGRAM
 END_PROGRAM
 ```
 
-Example:
-```
-VAR
-	Inv:Inv;
-	matSquare:ARRAY [1..5,1..5] OF REAL:=
-			[0.2760,    0.4980,    0.7510,    0.9590,    0.8410,
-            0.6800,    0.9600,    0.2550,    0.5470,    0.2540,
-            0.6550,    0.3400,    0.5060,    0.1390,    0.8140,
-            0.1630,    0.5850,    0.6990,    0.1490,    0.2440,
-            0.1190,    0.2240,    0.8910,    0.2580,    0.9290];
-	InverseMatrix:ARRAY [1..5,1..5] OF REAL;
-END_VAR
-
-PROGRAM
-    Inv(matSquare:=matSquare , 
-	    InverseMatrix=>InverseMatrix );
-END_PROGRAM
-```
-
-OUTPUT:
-```
-InverseMatrix = 
-    [2.0137,   -2.8012,    3.8725,    2.5972,   -5.1323,
-   -2.6019,    3.7756,   -3.1079,   -2.2397,    4.6346,
-    2.0027,   -3.2799,    2.3245,    3.8437,   -3.9626,
-    2.1237,   -1.1381,    0.5447,    0.6036,   -2.2472,
-   -2.1412,    2.9102,   -2.1274,   -3.6468,    5.0409]
-```
-
-
 ## LuDecomposition
 Lu Decomposition in L U terms using the doolittle's method.
 ```
@@ -59,40 +29,6 @@ PROGRAM
             L:= L, U:= U);
 END_PROGRAM
 ```
-
-Example:
-```
-VAR
-    LuDecomposition:LuDecomposition;
-	A_1:ARRAY [1..4,1..4] OF REAL:=
-        [6,     7,     2,     2,
-        6,    -5,     5,     1,
-        1,    -1,     0,     6,
-        5,    -4,     9,     7];
-	L_1:ARRAY [1..4,1..4] OF REAL;
-	U_1:ARRAY [1..4,1..4] OF REAL;
-END_VAR
-
-PROGRAM
-    LuDecomposition(A:=A_1 , 
-				L:=L_1 , U:=U_1 );
-END_PROGRAM
-```
-
-OUTPUT:
-```
-L_1 = 
-        [1, 0, 0, 0,
-        1, 1, 0, 0,
-        0.1666, 0.1805, 1, 0,
-        0.8333, 0.8194, -5.5714, 1];
-U_1 = 
-        [6, 7, 2, 2,
-        0, -12, 3, -1,
-        0, 0, -0.875, 5.8472,
-        0, 0, 0, 38.7301];
-```
-
 
 ## LuInverse
 Lu inverse from L U terms using forward and backwards substitutions.
@@ -117,49 +53,6 @@ PROGRAM
 END_PROGRAM
 ```
 
-Example:
-```
-VAR
-    LuInverse:LuInverse;
-	L_2:ARRAY [1..4,1..4] OF REAL:=
-		[1, 0, 0, 0,
-        1, 1, 0, 0,
-        0.1666, 0.1805, 1, 0,
-        0.8333, 0.8194, -5.5714, 1];
-	u_2:ARRAY [1..4,1..4] OF REAL:=
-		[6, 7, 2, 2,
-        0, -12, 3, -1,
-        0, 0, -0.875, 5.8472,
-        0, 0, 0, 38.7301];
-	LuInv_Matrix:ARRAY [1..4,1..4] OF REAL;
-	d_2:ARRAY [1..4,1..4] OF REAL;
-	eye4:ARRAY [1..4,1..4] OF REAL:=
-		[1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1];
-END_VAR
-
-PROGRAM
-    LuInverse(
-	L:=L_2 , 
-	u:=u_2 , 
-	a:=LuInv_Matrix , 
-	d:=d_2 , 
-	eyeN:=eye4 );
-END_PROGRAM
-```
-
-OUTPUT:
-```
-eye_1 = 
-        [0.07213116, 0.176229522, 0.07950821, -0.113934427,
-        0.08196721, -0.106557377, -0.05737705, 0.0409836061,
-        -0.00491803465, -0.108606562, -0.181557387, 0.172540992,
-        0.00163934508, -0.0471311472, 0.143852457, 0.0258196723];
-```
-
-
 ## pInv
 Moore – Penrose pseudo inverse matrix
 ```
@@ -175,34 +68,3 @@ PROGRAM
 END_PROGRAM
 	
 ```
-
-Example:
-```
-VAR
-    pInv:pInv;
-	matrix:ARRAY [1..6,1..5] OF REAL:=
-        [0.2760,    0.4980,    0.7510,    0.9590,    0.8410,
-        0.6800 ,   0.9600,    0.2550,    0.5470,    0.2540,
-        0.6550,    0.3400,    0.5060,    0.1390,    0.8140,
-        0.1630,    0.5850,    0.6990,    0.1490,    0.2440,
-        0.1190,    0.2240,    0.8910,    0.2580,    0.9290,
-        7.2200,   -3.5400,   -2.6400,   -2.8700,    4.8400];
-	pInvMatrix:ARRAY [1..5,1..6] OF REAL;
-END_VAR
-
-PROGRAM
-    pInv(matrix:=matrix ,
-	    pInvMatrix=>pInvMatrix );
-END_PROGRAM
-```
-
-OUTPUT:
-```
-pInvMatrix =
-    [1.5218,   -0.9412,   -1.2723,    3.2966,   -2.1499,    0.2454,
-   -2.1481,    2.0594,    1.6386,   -2.8850 ,   1.8831,   -0.2264,
-    1.6529,   -1.9569,   -1.3346,    4.3412,   -1.8414,    0.1745,
-    1.9717,   -0.5632,   -1.0454,    0.8198,   -1.3254,    0.0758,
-   -1.7700,    1.5065,    1.7551,   -4.1746,    2.7903,   -0.1852];
-```
-
