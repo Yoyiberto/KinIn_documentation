@@ -4,6 +4,7 @@ KinIn is a framework designed for the iterative kinematic analysis of mechanical
 
 
 For installation instructions, see the [Getting Started](getting-started/installation.md) section.
+![Plot_2_positions](getting-started/images/MatlabMerged_v3.png)
 
 ## Functions structure
 

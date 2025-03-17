@@ -2,7 +2,7 @@
 Inverse matrix.
 ```
 VAR_INPUT
-    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
 END_VAR
 VAR_OUTPUT
     InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
@@ -18,9 +18,10 @@ END_PROGRAM
 Lu Decomposition in L U terms using the doolittle's method.
 ```
 VAR_INPUT
-	matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;END_VAR
+	matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
 VAR_OUTPUT
-    L:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//LU factor same size input matrix
+    L:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
 	U:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
 END_VAR
 
@@ -35,10 +36,11 @@ Lu inverse from L U terms using forward and backwards substitutions.
 ```
 VAR_INPUT
 	//create following matrices all with same size
-	L:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//LU factor same size input matrix
+	L:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
 	U:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
 	d:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
 	eyeN:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+END_VAR
 VAR_OUTPUT
 	InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
 END_VAR
@@ -57,7 +59,7 @@ END_PROGRAM
 Moore – Penrose pseudo inverse matrix
 ```
 VAR_INPUT
-	Jb:ARRAY [1..GVL.pInv_dim1,1..GVL.pInv_dim2] OF REAL;//maybe in inout because of size   
+	Jb:ARRAY [1..GVL.pInv_dim1,1..GVL.pInv_dim2] OF REAL;
 VAR_OUTPUT
 	pInvMatrix:ARRAY [1..GVL.pInv_dim2,1..GVL.pInv_dim1] OF REAL;
 END_VAR

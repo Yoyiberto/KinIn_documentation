@@ -35,7 +35,7 @@ Body Jacobian (6xn real numbers). From joint coordinates and the joint screw axe
 ```
 VAR_INPUT
 	Blist:ARRAY[*,*] OF REAL;
-	thetalist:ARRAY[*] OF REAL;//as output
+	thetalist:ARRAY[*] OF REAL;
 END_VAR
 VAR_OUTPUT
     Jb:ARRAY [1..GVL.pInv_dim1,1..GVL.pInv_dim2] OF REAL;	
@@ -51,7 +51,7 @@ END_PROGRAM
 From matrix exponential to Rotation matrix and Angle.
 ```
 VAR_INPUT
-    omgtheta:ARRAY [1..3] OF REAL;//I suppose 3vector
+    omgtheta:ARRAY [1..3] OF REAL;
 END_VAR
 VAR_OUTPUT
     omghat:ARRAY [1..3] OF REAL;
@@ -59,8 +59,8 @@ VAR_OUTPUT
 END_VAR
 
 PROGRAM
-	expToRotAxisAndAngle(expc3:= omgtheta
-		,omghat=> omghat, theta=> theta);//outs
+	expToRotAxisAndAngle(expc3:= omgtheta,
+		omghat=> omghat, theta=> theta);
 END_PROGRAM
 ```
 
@@ -75,8 +75,8 @@ VAR_OUTPUT
 END_VAR
 
 PROGRAM
-    Exp_se3_fromTrans(T:= MatMul_out);
-    Exp_se3_fromTrans.expmat
+    Exp_se3_fromTrans(T:= MatMul_out,
+                    expmat=>expmat);
 END_PROGRAM
 ```
 
@@ -107,8 +107,8 @@ VAR_OUTPUT
 END_VAR
 
 PROGRAM
-    fastInverseTransform(T:=getFwdKinematics_Body.T);
-    fastInverseTransform.invT
+    fastInverseTransform(T:=T,
+                        invT=>invT);
 END_PROGRAM
 ```
 
@@ -117,8 +117,8 @@ Computes the forward kinematics using the exponential form. It needs the M, Blis
 ```
 VAR_INPUT
 	M:ARRAY [1..4,1..4] OF REAL;
-   	Blist:ARRAY [*,*] OF REAL;//6rows x njoints
-	thetalist:ARRAY [*] OF REAL;//number of joints
+   	Blist:ARRAY [*,*] OF REAL;
+	thetalist:ARRAY [*] OF REAL;
 END_VAR
 VAR_OUTPUT
 	T:ARRAY [1..4,1..4] OF REAL;
@@ -141,7 +141,7 @@ VAR_INPUT
     Blist:ARRAY[*,*] OF REAL;
 END_VAR
 VAR_OUTPUT
-    thetalist:ARRAY[*] OF REAL;//as output
+    thetalist:ARRAY[*] OF REAL;
 	success:BOOL;
 END_VAR
 
@@ -162,10 +162,10 @@ END_PROGRAM
 Rotation in SO3 from Exponential form in so3.
 ```
 VAR_INPUT
-	so3mat:ARRAY [1..3,1..3] OF REAL;//so3x3
+	so3mat:ARRAY [1..3,1..3] OF REAL;
 END_VAR
 VAR_OUTPUT
-	R_Matrix:ARRAY [1..3,1..3] OF REAL;//SO3x3
+	R_Matrix:ARRAY [1..3,1..3] OF REAL;
 END_VAR
 
 PROGRAM
@@ -186,8 +186,9 @@ VAR_OUTPUT
 END_VAR
 
 PROGRAM
-    Inv(matSquare:= matSquareSize2, 
-	    InverseMatrix=> InverseMatrix);
+    se3ToSpatialVel(se3mat:=se3mat ,
+                     V=>V );
+
 END_PROGRAM
 ```
 
@@ -196,15 +197,15 @@ END_PROGRAM
 Gets Angular velocity from a so3 matrix.
 ```
 VAR_INPUT
-    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+	so3mat_4:ARRAY [1..3,1..3] OF REAL;	
 END_VAR
 VAR_OUTPUT
-    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+    omg_4:ARRAY [1..3] OF REAL;//SO3x3
 END_VAR
 
 PROGRAM
-    Inv(matSquare:= matSquareSize2, 
-	    InverseMatrix=> InverseMatrix);
+    so3ToAngularVelocity(so3mat:=so3mat_4 ,
+                         omg=>omg_4 );
 END_PROGRAM
 ```
 
@@ -214,15 +215,15 @@ Spatial velocity to an SE3 matrix
 
 ```
 VAR_INPUT
-    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+	V_1:ARRAY [1..6] OF REAL;
 END_VAR
 VAR_OUTPUT
-    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+	se3mat_1:ARRAY [1..4,1..4] OF REAL;
 END_VAR
 
 PROGRAM
-    Inv(matSquare:= matSquareSize2, 
-	    InverseMatrix=> InverseMatrix);
+    spatialVelToSE3Matrix(V:=V_1 ,
+                 se3mat=>se3mat_1 );
 END_PROGRAM
 ```
 
@@ -231,15 +232,15 @@ Transformation matrix in SE3 from exponential from in s3.
 
 ```
 VAR_INPUT
-    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+	se3mat_3:ARRAY [1..4,1..4] OF REAL;	
 END_VAR
 VAR_OUTPUT
-    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+    T_3:ARRAY [1..4,1..4] OF REAL;
 END_VAR
 
 PROGRAM
-    Inv(matSquare:= matSquareSize2, 
-	    InverseMatrix=> InverseMatrix);
+    TransSE3_fromExp_se3(se3mat:=se3mat_3 ,
+                        T=>T_3 );
 END_PROGRAM
 ```
 
@@ -248,14 +249,15 @@ Rotation and Position from a Transformation matrix in SE3 form.
 
 ```
 VAR_INPUT
-    matSquare:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;//matrix with the second 
+	T_4:ARRAY[1..4,1..4] OF REAL;
 END_VAR
 VAR_OUTPUT
-    InverseMatrix:ARRAY [1..GVL.nInvSize,1..GVL.nInvSize] OF REAL;
+	RotMat:ARRAY[1..3,1..3] OF REAL;//rotation matrix
+	p:ARRAY[1..3] OF REAL;//position array
 END_VAR
 
 PROGRAM
-    Inv(matSquare:= matSquareSize2, 
-	    InverseMatrix=> InverseMatrix);
+    TransSE3_ToRotAndPos(T:=T_4 , 
+                RotMat=>RotMat , p=>p );
 END_PROGRAM
 ```

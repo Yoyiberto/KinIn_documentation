@@ -46,13 +46,15 @@ nav:
   - Getting Started:
     - Installation: getting-started/installation.md
   - Modules:
+    - Linear Algebra: Modules/linAlg.md 
     - Inverse Functions: Modules/InverseFunctions.md
     - Jacobian Functions: Modules/JacobianFunctions.md  # New module
-    - Linear Algebra: Modules/linAlg.md 
+
   - Examples:
     - Examples Linear Algebra: examples/Ex_Alg.md
     - Examples Inverse Functions: examples/Ex_Inv.md
     - Examples Jacobian Functions: examples/Ex_Jacobian.md
     - Example mechanism: examples/Ex_Mechanism.md
+    - Matlab demonstration: examples/Ex_Matlab.md
   - About:
     - License: about/license.md
