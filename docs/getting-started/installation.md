@@ -16,18 +16,13 @@ The functions are categorized as follows:
 
 ![IDE Screenshot](images/IDE.png)
 
-For complete documentation and usage examples, please visit the [KinIn_documentation](https://yoyiberto.github.io/KinIn_documentation/).
-
 ## **3. Prerequisites & Recommended Environment**  
-The recommended environment is CODESYS V3.5 SP20 with the library OSCAT BASIC installed.
-For MATLAB, the code requires the Robotics System Toolbox. 
+- The recommended environment is CODESYS V3.5 SP20.
+- For MATLAB, the code requires the Robotics System Toolbox. 
 ## **4. Installation & Setup**  
 ### CODESYS:
 - Install CODESYS V3.5 from the official website if not already installed
-- Install OSCAT BASIC 3.3.4.0 library (included as 'BASIC.library' in this repository or available on the CODESYS official website)
 - Open the 'KinIn.project' in CODESYS
-
-To install the library, click on the Tools tab in CODESYS IDE, then select Library Repository and Install. Alternatively, use CODESYS Installer.
 
 ### MATLAB:
 - Install MATLAB or use MATLAB Online
@@ -38,10 +33,10 @@ To install the library, click on the Tools tab in CODESYS IDE, then select Libra
 ### CODESYS: 
 The framework is designed to integrate complex workflows. All files and functions are explicitly provided in this repository. The example in the CODESYS project works as follows:
 
-PLC_PRG uses the 'INV KIN' function to calculate the angles needed to reach an arbitrary position (defined by a 4x4 matrix T). The function returns the solution in 'thetalist'.
+The PLC_PRG runs all the examples. First it calls the example programs for linear algebra, inverse and jacobian functions. Then it runs the example positions A and B shown in the paper.
 
 ### MATLAB: 
-Run 'code.m' to visualize the results and verify that they match the CODESYS output, providing insight into how the mechanism will behave in real-world applications.
+Run 'plot_robot.m' to visualize the results and verify that they match the CODESYS output, providing insight into how the mechanism will behave in real-world applications.
 
 ### **6. Demonstration & Examples**  
 ### CODESYS:
